@@ -1,110 +1,253 @@
-# COLOR_CONVERSIONS_OF-IMAGE
+# Ex01_COLOR_CONVERSIONS_OF-IMAGE
 ## AIM
-Write a Python program using OpenCV that performs the following tasks:
+To write a python program using OpenCV to do the following image manipulations.
 
-i) Read and Display an Image.
+i) Read, display, and write an image.
 
-ii) 	Draw Shapes and Add Text.
+ii) Access the rows and columns in an image.
 
-iii) Image Color Conversion.
+iii) Cut and paste a small portion of the image.
 
-iv) Access and Manipulate Image Pixels.
-
-v) Image Resizing
-
-vi) Image Cropping
-
-vii) Image Flipping
-
-viii)	Write and Save the Modified Image
+iv)To perform the color conversion between RGB, BGR, HSV, and YCbCr color models.
 
 
-## Software Required:
+## SOFTWARE REQUIRED:
 Anaconda - Python 3.7
-## Algorithm:
-### Step1:
-Load an image from your local directory and display it.
-### Step2:
-o	Draw a line from the top-left to the bottom-right of the image.
-o	Draw a circle at the center of the image.
-o	Draw a rectangle around a specific region of interest in the image.
-o	Add the text "OpenCV Drawing" at the top-left corner of the image.
+## ALGORITHM:
 
-### Step3:
-o	Convert the image from RGB to HSV and display it.
-o	Convert the image from RGB to GRAY and display it.
-o	Convert the image from RGB to YCrCb and display it.
-o	Convert the HSV image back to RGB and display it.
+- **STEP 1:** Choose an image and save it as a filename.jpg ,<br><br>
+- **STEP 2:** Use imread(filename, flags) to read the file.<br><br>
+- **STEP 3:** Use imshow(window_name, image) to display the image.<br><br>
+- **STEP 4:** Use imwrite(filename, image) to write the image.<br><br>
+- **STEP 5:** End the program and close the output image windows.<br><br>
+- **STEP 6:** Convert BGR and RGB to HSV and GRAY<br><br>
+- **STEP 7:** Convert HSV to RGB and BGR<br><br>
+- **STEP 8:** Convert RGB and BGR to YCrCb<br><br>
+- **STEP 9:** Split and Merge RGB Image<br><br>
+- **STEP 10:** Split and merge HSV Image<br><br>
 
-### Step4:
-o	Access and print the value of the pixel at coordinates (100, 100).
-o	Modify the color of the pixel at (200, 200) to white.
+## PROGRAM:
 
-### Step5:
-o	Resize the original image to half its size and display it.
-### Step6:
-o	Crop a region of interest (ROI) from the image (e.g., a 100x100 pixel area starting at (50, 50)) and display it.
-### Step7:
-o	Flip the original image horizontally and display it.
-o	Flip the original image vertically and display it.
+**Developed By:** Joans jay authers <br>
+**Register Number:** 212221240019
 
-### Step8:
-o	Save the final modified image to your local directory.
+<table>
+  <tr>
+    <td width=50%>
 
+### i) Read and display the image
+```Python
+import cv2
+image=cv2.imread('japan.jpg')
+image=cv2.resize(image,(1290,720))
+cv2.imshow('Bairav Skandan Loha',image)
+cv2.waitKey(0)
+cv2.destroyAllWindows()
+``` 
+  </td>
+  <td>
 
-##### Program:
-### Developed By:
-### Register Number: 
+### OUTPUT:
 
-
-## Output:
-
-### i)Read and Display an Image
-
-<br>
-<br>
-
-### ii)Draw Shapes and Add Text
-
-<br>
-<br>
-
-### iii)Image Color Conversion
-
-<br>
-<br>
-
-### iv)Access and Manipulate Image Pixels
-<br>
-<br>
-
-### v)Image Resizing
-<br>
-<br>
-
-### vi)Image Cropping
-<br>
-<br>
-
-### vii)Image Flipping
-<br>
-<br>
-
-### viii)Write and Save the Modified Image
-<br>
-<br>
+![image](https://github.com/EASWAR17/COLOR_CONVERSIONS_OF-IMAGE/assets/94154683/14db5b53-41c3-49fa-8c19-14d11fbbf206)
 
 
 
+ 
+  </td>
+  </tr>
+
+   <tr>
+    <td width=50%>
+
+### ii) Write the image
+```Python
+    import cv2
+    image=cv2.imread('japan.jpg')
+    cv2.imwrite('d.jpg',image)
+```
+  </td>
+  <td>
+
+### OUTPUT:
+![Screenshot 2024-02-15 204036](https://github.com/Janarthanan2/DIP_EX01_COLOR_CONVERSIONS_OF-IMAGE/assets/119393515/9e2f28bf-b688-471a-97b5-849ffea08705)
+
+
+  </td>
+  </tr>
+  <tr>
+    <td width=50%>
+
+### iii) Shape of the Image
+```Python
+    import cv2
+    image=cv2.imread('japan.jpg',1)
+    print(image.shape)
+```
+  </td>
+  <td>
+
+### OUTPUT:
+
+![Screenshot 2024-02-15 205108](https://github.com/Janarthanan2/DIP_EX01_COLOR_CONVERSIONS_OF-IMAGE/assets/119393515/d2318219-e727-4bf8-9c21-59bc74ae2478)
+
+  </td>
+  </tr>
+  <tr>
+    <td>
+      
+### iv) Access rows and columns
+```Python
+    import random
+    import cv2
+    image=cv2.imread('japan.jpg',1)
+    image=cv2.resize(image,(400,400))
+    for i in range (150,200):
+      for j in range(image.shape[1]):
+          image[i][j]=[random.randint(0,255),
+                       random.randint(0,255),
+                       random.randint(0,255)] 
+    cv2.imshow('part image',image)
+    cv2.waitKey(0)
+    cv2.destroyAllWindows()
+```
+  </td>
+  <td width="50%">
+
+### OUTPUT:
+
+![Screenshot 2024-02-15 205437](https://github.com/Janarthanan2/DIP_EX01_COLOR_CONVERSIONS_OF-IMAGE/assets/119393515/80aeca6f-9881-427a-9c19-3027d101cc0a)
+
+  </td>
+  </tr>
+  <tr>
+    <td width=50%>
+      
+### v) Cut and paste portion of image
+
+ ```Python
+    import cv2
+    image=cv2.imread('japan.jpg',1)
+    image=cv2.resize(image,(400,400))
+    tag =image[130:200,110:190]
+    image[110:180,120:200] = tag
+    cv2.imshow('partimage1',image)
+    cv2.waitKey(0)
+    cv2.destroyAllWindows()
+```
+  </td>
+  <td>
+
+### OUTPUT:
+![Screenshot 2024-02-15 210648](https://github.com/Janarthanan2/DIP_EX01_COLOR_CONVERSIONS_OF-IMAGE/assets/119393515/40ec4acf-1799-4e8e-a95a-132775b8573f)
+
+  </td>
+  </tr>
+</table>
+
+### vi) BGR and RGB to HSV and GRAY
+
+```python
+import cv2
+img = cv2.imread('space1.jpg',1)
+img = cv2.resize(img,(720,720))
+cv2.imshow('Original Image',img)
+
+hsv1 = cv2.cvtColor(img,cv2.COLOR_BGR2HSV)
+cv2.imshow('BGR2HSV',hsv1)
+
+hsv2 = cv2.cvtColor(img,cv2.COLOR_RGB2HSV)
+cv2.imshow('RGB2HSV',hsv2)
+
+gray1 = cv2.cvtColor(img,cv2.COLOR_BGR2GRAY)
+cv2.imshow('BGR2GRAY',gray1)
+
+gray2 = cv2.cvtColor(img,cv2.COLOR_RGB2GRAY)
+cv2.imshow('RGB2GRAY',gray2)
+
+cv2.waitKey(0)
+cv2.destroyAllWindows()
+```
+### OUTPUT:
+
+<img src="https://github.com/Janarthanan2/DIP_EX01_COLOR_CONVERSIONS_OF-IMAGE/assets/119393515/64d99c6e-8d82-4245-87dc-6c5dd9392374" width=350 height=350>
+<img src="https://github.com/Janarthanan2/DIP_EX01_COLOR_CONVERSIONS_OF-IMAGE/assets/119393515/f49590eb-8ab2-40ec-a5cb-b8fb4fc99b9d" width=350 height=350>
+<img src="https://github.com/Janarthanan2/DIP_EX01_COLOR_CONVERSIONS_OF-IMAGE/assets/119393515/f7800fa9-8396-4cf5-b5df-fedf8e129141" width=350 height=350>
+<img src="https://github.com/Janarthanan2/DIP_EX01_COLOR_CONVERSIONS_OF-IMAGE/assets/119393515/063dfd7b-ccee-49a6-8a79-e30930440fd9" width=350 height=350>
+<img src="https://github.com/Janarthanan2/DIP_EX01_COLOR_CONVERSIONS_OF-IMAGE/assets/119393515/895e84b1-9980-4291-baa1-c033331ba70f" width=350 height=350>
+
+### vii) HSV to RGB and BGR
+```python
+import cv2
+image = cv2.imread('japan.jpg')
+image = cv2.resize(image,(720,720))
+rgb_image = cv2.cvtColor(image, cv2.COLOR_HSV2RGB)
+bgr_image = cv2.cvtColor(rgb_image, cv2.COLOR_RGB2BGR)
+cv2.imshow('HSV Image', image)
+cv2.imshow('RGB Image', rgb_image)
+cv2.imshow('BGR Image', bgr_image)
+cv2.waitKey(0)
+cv2.destroyAllWindows()
+```
+
+### OUTPUT:
+
+<img src="https://github.com/Janarthanan2/DIP_EX01_COLOR_CONVERSIONS_OF-IMAGE/assets/119393515/dbb2eb9e-9064-47ec-8916-85353833882a" height=350 width="350">
+<img src="https://github.com/Janarthanan2/DIP_EX01_COLOR_CONVERSIONS_OF-IMAGE/assets/119393515/8a87870b-89e5-40bf-a359-5b02a91c058e" height=350 width="350">
+<img src="https://github.com/Janarthanan2/DIP_EX01_COLOR_CONVERSIONS_OF-IMAGE/assets/119393515/e7e8159d-64f0-4e73-b392-a11b7bfab276" height=350 width="350">
+
+### viii) RGB and BGR to YCrCb
+```python
+import cv2
+image = cv2.imread('japan.jpg')
+image = cv2.resize(image,(720,720))
+ycrcb_image = cv2.cvtColor(image, cv2.COLOR_RGB2YCrCb)
+cv2.imshow('YCrCb Image', ycrcb_image)
+cv2.waitKey(0)
+cv2.destroyAllWindows()
+```
+### OUTPUT:
+<img src="https://github.com/Janarthanan2/DIP_EX01_COLOR_CONVERSIONS_OF-IMAGE/assets/119393515/da573c17-ac31-464d-bec3-eb50412faf1a" height=350 width="350">
+
+### ix) Split and merge RGB Image
+```python
+import cv2
+image = cv2.imread('japan.jpg')
+image=cv2.resize(image,(720,720))
+blue, green, red = cv2.split(image)
+merged_image = cv2.merge([blue, green, red])
+cv2.imshow('Original Image', image)
+cv2.imshow('Merged Image', merged_image)
+cv2.waitKey(0)
+cv2.destroyAllWindows()
+```
+
+### OUTPUT:
+
+<img src="https://github.com/Janarthanan2/DIP_EX01_COLOR_CONVERSIONS_OF-IMAGE/assets/119393515/cef3bddb-3734-4177-a9cd-ccb40a9c2b46" height=350 width="350">
+
+### x) Split and merge HSV Image
+```python
+import cv2
+image = cv2.imread('japan.jpg')
+image = cv2.resize(image,(720,720))
+hsv_image = cv2.cvtColor(image, cv2.COLOR_BGR2HSV)
+hue, saturation, value = cv2.split(hsv_image)
+merged_hsv_image = cv2.merge([hue, saturation, value])
+merged_bgr_image = cv2.cvtColor(merged_hsv_image, cv2.COLOR_HSV2RGB)
+cv2.imshow('Original Image', image)
+cv2.imshow('Merged BGR Image', merged_bgr_image)
+cv2.imshow('Original2 Image', merged_hsv_image)
+cv2.waitKey(0)
+cv2.destroyAllWindows()
+```
+
+### OUTPUT:
+
+<img src="https://github.com/Janarthanan2/DIP_EX01_COLOR_CONVERSIONS_OF-IMAGE/assets/119393515/c87f8785-357e-48a6-8f5c-f13f416695c4" height=350 width="350">
+<img src="https://github.com/Janarthanan2/DIP_EX01_COLOR_CONVERSIONS_OF-IMAGE/assets/119393515/f8168b4d-6767-4ec2-b43d-1fb446a0cb3a" height=350 width="350">
 
 
 
-## Result:
-Thus the images are read, displayed, and written ,and color conversion was performed  successfully using the python program.
-
-
-
-
-
-
-
+## RESULT:
+Thus the images are read, displayed, and written ,and color conversion was performed between RGB, HSV and YCbCr color models successfully using the python program.
